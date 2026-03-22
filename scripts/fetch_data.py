@@ -72,7 +72,6 @@ def save_to_cache(category, symbol, new_data):
     return added
 
 def fetch_data(url, key_name, symbol):
-    """Helper to fetch from API with timeout and basic error logging."""
     try:
         response = requests.get(url, timeout=15)
         res_json = response.json()
@@ -80,9 +79,15 @@ def fetch_data(url, key_name, symbol):
         if key_name in res_json:
             return res_json[key_name]
         
-        # Log specific Alpha Vantage errors (Rate limits, etc)
+        # Only print the keys, not the whole data blob
+        # This tells you if it's a 'Note' (Limit) or 'Error Message' (Bad Ticker)
+        keys = list(res_json.keys())
         error_msg = res_json.get('Note') or res_json.get('Information') or res_json.get('Error Message')
-        print(f"⚠️ API issue for {symbol}: {error_msg}")
+        
+        print(f"⚠️ API issue for {symbol}. Response keys: {keys}")
+        if error_msg:
+            print(f"   Details: {error_msg[:100]}...") # Truncate long messages
+            
         return None
     except Exception as e:
         print(f"❌ Connection error for {symbol}: {e}")
