@@ -1,0 +1,12 @@
+# Security
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Local Data (Optional)
+# If you want GitHub to be the "master" source of data, 
+# keep this commented out so your local data pushes to GitHub.
+# data/

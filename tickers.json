@@ -1,0 +1,6 @@
+{
+  "stocks": ["AAPL", "GOOGL", "AMZN", "META", "MSFT", "NVDA", "TSLA"],
+  "indices": ["SPY", "NIFTYBEES.NS"],
+  "commodities": ["GOLD", "SILVER"],
+  "fx": [{"from": "USD", "to": "INR"}]
+}

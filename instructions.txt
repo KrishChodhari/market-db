@@ -1,0 +1,44 @@
+=========================================
+MARKET-DB PROJECT MANAGEMENT
+=========================================
+
+1. LOCAL SETUP
+---------------------------
+# Install dependencies (only once)
+pip install requests python-dotenv
+
+# Create a file named '.env' in the root folder
+# Add your key inside: ALPHA_VANTAGE_KEY=your_key_here
+
+
+2. RUNNING THE SYNC
+---------------------------
+# Ensure virtual env is active
+source venv/bin/activate  # Mac/Linux
+.\venv\Scripts\activate   # Windows
+
+# Run the script
+python scripts/fetch_data.py
+
+# NOTE: The script will skip tickers you already have data for.
+# If you hit the 25-request daily limit, just wait until tomorrow.
+
+
+3. GITHUB REPO SETUP
+---------------------------
+# Add changes
+git add .
+
+# Commit
+git commit -m "Setup automated market data sync"
+
+# Push to GitHub
+git push origin main
+
+
+4. GITHUB ACTIONS (AUTOMATION)
+---------------------------
+# The sync runs automatically at 00:00 UTC daily.
+# To run manually on GitHub:
+# Go to 'Actions' tab -> 'Market Data Sync' -> 'Run workflow'
+=========================================
