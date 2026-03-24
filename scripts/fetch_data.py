@@ -134,7 +134,7 @@ def fetch_alpha_vantage(symbol):
     """Fetch daily OHLCV from Alpha Vantage TIME_SERIES_DAILY. Returns normalised dict or None."""
     url = (
         f"https://www.alphavantage.co/query"
-        f"?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey={AV_KEY}"
+        f"?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={AV_KEY}"
     )
     try:
         res = requests.get(url, timeout=15).json()
